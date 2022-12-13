@@ -51,15 +51,15 @@ const teacherLogin = async (req, res) => {
         const { email, password } = data;
 
         //Input data validation
-        // let msgUserData = isValidLoginData(data)
-        // if (msgUserData) {
-        //     return res.status(400).send({ status: false, message: msgUserData })
-        // }
+        const validEmail= dataValidation.isValidEmail(email)
+        if(validEmail) return res.status(400).send({ status: false, message: validEmail });
 
         const isEmailPresent= await teacherModel.findOne({ email });
         if (!isEmailPresent) {
             return res.status(400).send({ status: false, message: "this email is not registered " });
         }
+        const validPass= dataValidation.isValidpass(password)
+        if(validPass) return res.status(400).send({ status: false, message: validPass });
 
         //Input data verify
         let Password = await bcrypt.compare(password, isEmailPresent.password)
