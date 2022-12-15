@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 
 const authentication = async (req, res, next) => {
     try {
+        //let token = req.headers.authorization.split(" ")[1];
         let token = req.headers["x-api-key"]
 
         //Token present or not

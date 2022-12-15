@@ -6,6 +6,7 @@ const createStudent = async function (req, res) {
     try {
 
         let data = req.body
+        data.marks = parseInt(data.marks)
         // let token= req.headers["x-api-key"]
         let Id = req.Id
 
@@ -94,6 +95,7 @@ const updateStudentData = async function (req, res) {
 
     let studentData = req.studentData
     let data = req.body
+    data.marks = parseInt(data.marks)
     const { name, subject, marks } = data
     const obj = {}
     if (name) {

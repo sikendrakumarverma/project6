@@ -75,6 +75,8 @@ const teacherLogin = async (req, res) => {
             teacherId: isEmailPresent._id,
             token: token
         }
+         //res.headers.x-api-key = token;
+         //res.setHeader('Authorization', 'Bearer '+ token);
         return res.status(200).send({ status: true, message: "login successfully", data: Data });
 
     } catch (error) {
